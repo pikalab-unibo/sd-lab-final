@@ -1,0 +1,25 @@
+swagger: "2.0" # OAS version
+info:
+  # title, version, description, authors info
+schemes:
+  # list of supported protocols, e.g. http, https, ws, wss
+securityDefinitions:
+  # supported authentication/authorization schemas
+paths:
+  # supported paths
+  /collection/{resourceID}:
+  # supported routes for this path
+  parameters:
+    # list of common parameters for all routes in this path (e.g. "resourceID")
+  get:
+    # supported IO values for the route "GET /collection/{resourceID}"
+    parameters:
+    # list of query and body parameters for this route
+    responses:
+    # possible status codes and their respective outcomes
+  post:
+    # supported IO values for route "POST /collection/{resourceID}"
+definitions:
+  # data types definitions (i.e., schemas)
+
+# other fields
