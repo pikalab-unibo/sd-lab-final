@@ -12,7 +12,7 @@
 \newcommand{\labGroup}{https://gitlab.com/pika-lab/courses/ds/ay2021}
 \newcommand{\labRepo}{\labGroup/lab-\labN}
 
-\title[L\labN{} -- Final]{L\labN{} -- Conclusion \& Future Works}
+\title[L\labN{} -- Final]{L\labN{} -- Conclusions \& Future Works}
 %
 \subtitle[SD]{Distributed Systems / Technologies}
 %
@@ -390,7 +390,7 @@
 		\item Yet, several features are currently missing to make our framework actually mature
 		%
 		\begin{itemize}
-			\item[eg] \jade{}-like interaction protocols
+			\item[eg] \fipa{} interaction protocols
 			\item[eg] a white-pages services, a.k.a. naming service
 			\item[eg] a yellow-pages services 
 			\item[eg] some access control mechanism for the \linda{} service 
@@ -405,7 +405,207 @@
 			\item further material can be provided on demand for each topic
 		\end{itemize}
 	\end{itemize}
+\end{frame}
 
+\startExercise
+
+\subsection{\fipa{} Interaction Protocols}
+
+\begin{frame}[allowframebreaks]
+\frametitle{Exercise \currentExercise{} -- \fipa{} Interaction Protocols (IP)}
+	\begin{alertblock}{This is an \textbf{optional}, \textbf{unconstrained} exercise}
+		\begin{itemize}
+			\item do it if you want to deepen your understanding
+			\item you are free to design your solution as you prefer
+			\item no test is provided
+		\end{itemize}
+	\end{alertblock}
+
+	\begin{block}{Motivation}
+		\begin{itemize}
+			\item Send and Receive behaviours, as well as \linda{} primitives, are \alert{basic} interaction mechanisms
+			\item Agents often compose them into more complex \alert{interaction protocols}
+			\item Interaction protocols are design patterns for interaction 
+			\item A rich agent framework should include some API (ie behaviours) for IP
+		\end{itemize}
+	\end{block}
+
+	\begin{block}{Goal}
+		\begin{itemize}
+			\item Design and implement some composite behaviours for agents, supporting \fipa{} IP
+			%
+			\item Detailed specification here: \url{http://www.fipa.org/repository/standardspecs.html}
+			%
+			\item[eg] Request, Query, Contract Net, Subscribe, \ldots
+		\end{itemize}
+	\end{block}
+
+	\begin{exampleblock}{Hint}
+		\begin{itemize}
+			\item consider mimicking \jade{}'s IP behaviour classes
+		\end{itemize}
+	\end{exampleblock}
+\end{frame}
+
+\startExercise
+
+\subsection{The White-Pages Service}
+
+\begin{frame}[allowframebreaks]
+\frametitle{Exercise \currentExercise{} -- The White-Pages Service}
+	\begin{alertblock}{This is an \textbf{optional}, \textbf{unconstrained} exercise}
+		\begin{itemize}
+			\item do it if you want to deepen your understanding
+			\item you are free to design your solution as you prefer
+			\item no test is provided
+		\end{itemize}
+	\end{alertblock}
+
+	\begin{block}{Motivation}
+		\begin{itemize}
+			\item Agents in a distributed environment should not be assumed to know each others
+			\item Agents should be able to discover each others dynamically
+			\item A service keeping track of the AIDs of all agents is required
+		\end{itemize}
+	\end{block}
+
+	\begin{block}{Goal}
+		\begin{itemize}
+			\item Design a distributed white-pages service keeping track of the AIDs of all the agents currently running within a distributed system
+			\item Agents should be automatically registered upon startup \& deregistered before termination
+			%
+			\begin{itemize}
+				\item[!] regardeless of what agent programmers do
+			\end{itemize}
+			\item Agents should be able to query the service whenever they want to discover the AIDs other agents running within the same distributed environment, possibly on different processes/machines
+		\end{itemize}
+	\end{block}
+
+	\begin{exampleblock}{Hint}
+		\begin{itemize}
+			\item consider mimicking \jade{}'s AMS, at least at a functional level
+			\item consider leveraging distributed tuple spaces to store AIDs 
+		\end{itemize}
+	\end{exampleblock}
+\end{frame}
+
+\startExercise
+
+\subsection{The Yellow-Pages Service}
+
+\begin{frame}[allowframebreaks]
+\frametitle{Exercise \currentExercise{} -- The Yellow-Pages Service}
+	\begin{alertblock}{This is an \textbf{optional}, \textbf{unconstrained} exercise}
+		\begin{itemize}
+			\item do it if you want to deepen your understanding
+			\item you are free to design your solution as you prefer
+			\item no test is provided
+		\end{itemize}
+	\end{alertblock}
+
+	\begin{block}{Motivation}
+		\begin{itemize}
+			\item When looking for collaborations, agents may require to discover other agents\ldots
+			\item \ldots on the basis of the services they can offer
+			\item rather than their names
+		\end{itemize}
+	\end{block}
+
+	\begin{block}{Goal}
+		\begin{itemize}
+			\item Design a distributed yellow-pages service keeping track of \alert{service descriptor} of all the agents willing to offer a service
+			
+			\item Agents should be able to (de)register whenever they want
+
+			\item Agents should be able to query the service whenever they want to discover service descriptor of other agents running within the same distributed environment, possibly on different processes/machines
+		\end{itemize}
+	\end{block}
+
+	\begin{exampleblock}{Hint}
+		\begin{itemize}
+			\item consider mimicking \jade{}'s DF, at least at a functional level
+			\item consider leveraging distributed tuple spaces to store service descriptors 
+		\end{itemize}
+	\end{exampleblock}
+\end{frame}
+
+\startExercise
+
+\subsection{Access Control for \linda{} WS}
+
+\begin{frame}[allowframebreaks]
+\frametitle{Exercise \currentExercise{} -- Access Control for \linda{} WS}
+	\begin{alertblock}{This is an \textbf{optional}, \textbf{unconstrained} exercise}
+		\begin{itemize}
+			\item do it if you want to deepen your understanding
+			\item you are free to design your solution as you prefer
+			\item no test is provided
+		\end{itemize}
+	\end{alertblock}
+
+	\begin{block}{Motivation}
+		\begin{itemize}
+			\item The \linda{} WS is very trivial: no \alert{access control} (AC) is performed on clients
+			\item Users are not explicitly represented as resources
+			\item Buggy or misbehaving agents may alter the correct functioning of a MAS 
+		\end{itemize}
+	\end{block}
+
+	\begin{block}{Goal}
+		\begin{itemize}
+			\item Design some AC mechanism for \linda{} tuple spaces
+			
+			\item Extend the \linda{} WS accordingly
+
+			\item Exploit authentication tokens (e.g. JWT) to handle authentication \& authorization at the HTTP level
+			
+			\item Extend \texttt{RemoteTupleSpace}s to support authentication
+		\end{itemize}
+	\end{block}
+
+	\begin{exampleblock}{Hint}
+		\begin{itemize}
+			\item consider consulting the additional material on this topic
+		\end{itemize}
+	\end{exampleblock}
+\end{frame}
+
+\startExercise
+
+\subsection{Suspensive Semantics via Web Sockets}
+
+\begin{frame}[allowframebreaks]
+\frametitle{Exercise \currentExercise{} -- Suspensive Semantics via Web Sockets}
+	\begin{alertblock}{This is an \textbf{optional}, \textbf{unconstrained} exercise}
+		\begin{itemize}
+			\item do it if you want to deepen your understanding
+			\item you are free to design your solution as you prefer
+			\item no test is provided
+		\end{itemize}
+	\end{alertblock}
+
+	\begin{block}{Motivation}
+		\begin{itemize}
+			\item We currently implement suspensive semantics over HTTP via \alert{long polling}
+			\item This is inadequate for modern WS
+			\item Web sockets should be used instead
+		\end{itemize}
+	\end{block}
+
+	\begin{block}{Goal}
+		\begin{itemize}
+			\item Explore how Web Sockets work in general
+			\item Explore how Web Sockets work in Javalin and Java's HTTP API
+			\item Use Web Sockets instead of long polling within the \linda{} Works
+			\item Modify \texttt{RemoteTupleSpace}s accordingly
+		\end{itemize}
+	\end{block}
+
+	\begin{exampleblock}{Hint}
+		\begin{itemize}
+			\item consider consulting the additional material on this topic
+		\end{itemize}
+	\end{exampleblock}
 \end{frame}
 
 %===============================================================================
